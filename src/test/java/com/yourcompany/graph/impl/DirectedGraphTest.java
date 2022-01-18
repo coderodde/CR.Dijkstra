@@ -60,6 +60,19 @@ public class DirectedGraphTest {
         assertFalse(graph.removeVertex(i2));
         assertFalse(graph.hasVertex(i2));
     }
+    
+    @Test
+    public void testNumberOfEdges() {
+        graph.addEdge(i1, i2);
+        graph.addEdge(i2, i3);
+        graph.addEdge(i3, i4);
+        
+        assertEquals(3, graph.numberOfEdges());
+        
+        graph.removeVertex(i2);
+        
+        assertEquals(1, graph.numberOfEdges());
+    }
 
     @Test
     public void testGetParentVerticesOf() {

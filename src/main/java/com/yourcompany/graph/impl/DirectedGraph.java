@@ -85,6 +85,7 @@ public class DirectedGraph<V> implements Graph<V> {
 
     @Override
     public boolean hasVertex(V vertex) {
+        checkInputNotNull(vertex);
         return vertices.contains(vertex);
     }
 
@@ -96,9 +97,8 @@ public class DirectedGraph<V> implements Graph<V> {
             return false;
         }
         
-        for (V childVertex : childMap.get(vertex)) {
-            parentMap.get(childVertex).remove(vertex);
-        }
+        numberOfEdges -= 
+                (childMap.get(vertex).size() + parentMap.get(vertex).size());
         
         childMap.remove(vertex);
         parentMap.remove(vertex);
@@ -146,10 +146,6 @@ public class DirectedGraph<V> implements Graph<V> {
         return Collections.<V>unmodifiableSet(vertices);
     }
 
-    private static <V> void checkInputNotNull(V node) {
-        Objects.requireNonNull(node, "The input graph vertex is null.");
-    }
-
     @Override
     public int numberOfNodes() {
         return vertices.size();
@@ -158,5 +154,9 @@ public class DirectedGraph<V> implements Graph<V> {
     @Override
     public int numberOfEdges() {
         return numberOfEdges;
+    }
+
+    private static <V> void checkInputNotNull(V node) {
+        Objects.requireNonNull(node, "The input graph vertex is null.");
     }
 }
