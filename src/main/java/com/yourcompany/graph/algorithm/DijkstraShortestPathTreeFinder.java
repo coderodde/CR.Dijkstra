@@ -29,8 +29,12 @@ public class DijkstraShortestPathTreeFinder<V> {
         }
     }
     
-    public ShortestPathTreeBuilder<V> 
-        findShortestPathTree(Graph<V> graph,
+    private DijkstraShortestPathTreeFinder() {
+        
+    }
+    
+    public static <V> ShortestPathTreeBuilder<V> 
+        findShortestPathTreeFrom(Graph<V> graph,
                              WeightFunction<V> weightFunction,
                              V sourceVertex) {
             

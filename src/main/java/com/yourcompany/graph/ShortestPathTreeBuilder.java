@@ -17,7 +17,7 @@ public class ShortestPathTreeBuilder<V> {
                         "The input parent map is null.");
     }
     
-    public ShortestPath<V> buildPath(V targetVertex) {
+    public ShortestPath<V> buildPathTo(V targetVertex) {
         List<V> path = new ArrayList<>();
         V node = targetVertex;
         
